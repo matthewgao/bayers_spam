@@ -34,3 +34,7 @@ func (this *TokenizerMgr) TokenizeCutAll(s string) []string {
 func (this *TokenizerMgr) TokenizeCut(s string) []string {
 	return this.jieba.Cut(s, true)
 }
+
+func (this *TokenizerMgr) Analyse(s string) []string {
+	return this.jieba.Extract(s, 20)
+}
