@@ -196,6 +196,7 @@ func predict(content string, spamWord_wc, hamWord_wc map[string]float64) (float6
 	return spam_predict, ham_predict
 }
 
+//若该词只出现在垃圾邮件的词典中，则令 P(w|s′)=0.01，反之亦然；若都未出现，则令 P(s|w)=0.4。PS.这里做的几个假设基于前人做的一些研究工作得出的。
 func main() {
 	// fileList := readFileList()
 	// fmt.Printf("%v, %v\n", len(fileList["spam"]), len(fileList["ham"]))
@@ -203,7 +204,6 @@ func main() {
 	// buildDict(fileList["ham"])
 
 	// tokenize.GetInstance()
-
 	spamWord_wc, hamWord_wc := Calculate()
 	sp, hp := predict(`公司现在有内部推荐机会,2-3人
 	主要从事视频编解码器在pc/dsp/arm上的优化工作.
